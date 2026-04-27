@@ -94,22 +94,22 @@ must carry one of three labels:
 
 ## Delegation Policy
 
-The `.claude/` directory contains skill, agent, rule, and hook stubs that will be
-populated as the project matures. Currently available skills:
+Active skills (implemented in `.claude/skills/`):
 
 | Skill | When to invoke |
 |---|---|
 | `prior-art-check` | Before implementing any new scientific feature |
 | `benchmark-gate` | Before claiming a feature works |
 | `emri-literature-scout` | When searching for relevant papers |
-| `theorem-to-code` | When translating an equation from literature to code |
 | `aps-draft` | When writing or editing paper drafts |
-| `citation-audit` | Before finalizing any written claim |
-| `experiment-design` | When designing computational experiments |
 
-**Currently empty stubs** (`.claude/agents/`, `.claude/rules/`, `.claude/hooks/`,
-`.claude/skills/*/SKILL.md`): populate only when a concrete, recurring need arises.
-Do not expand the `.claude` system speculatively.
+Placeholder skills (SKILL.md stubs exist but not yet implemented):
+`theorem-to-code`, `citation-audit`, `experiment-design`.
+
+Rules populate `.claude/rules/` (6 rules active: physics-core, emri-domain, numerics,
+ml-experiments, writing-aps, repo-ops). Agents and hooks are empty stubs — populate
+only when a concrete, recurring need arises. Do not expand the `.claude` system
+speculatively.
 
 ## Definition of Done
 
