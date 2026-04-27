@@ -2,6 +2,11 @@ from dataclasses import dataclass
 
 import numpy as np
 
+try:
+    from numpy import trapezoid
+except ImportError:
+    from numpy import trapz as trapezoid
+
 from .orbit import KerrOrbit
 from .radial import RadialSolver
 from .source import KerrGeo, SWSH, TeukolskySource
@@ -78,7 +83,7 @@ def compute_mode_amplitude(
 
     phase = np.exp(1.0j * omega * traj.t - 1.0j * m * traj.phi)
     integrand = phase * W
-    Z = np.trapezoid(integrand, traj.t) / (2.0j * omega * complex(radial.binc))
+    Z = trapezoid(integrand, traj.t) / (2.0j * omega * complex(radial.binc))
 
     return ModeAmplitudeResult(
         s=s,
