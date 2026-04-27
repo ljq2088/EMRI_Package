@@ -4,9 +4,10 @@
 
 Build a minimal, verifiable EMRI waveform pipeline by integrating three independently
 validated layers: **orbit** (geodesic/inspiral), **angular** (spin-weighted spheroidal
-harmonics), and **radial** (homogeneous Teukolsky solutions). The package serves as the
-integration point — it does not reimplement any of the three layers, only wraps and
-composes them.
+harmonics), and **radial** (homogeneous Teukolsky solutions). Current phase prioritizes
+integration over reimplementation — wrap and compose existing stable layers first.
+Solver, surrogate, and ML modules may reimplement or replace layers once benchmarks
+validate the replacement.
 
 ## Domain Priorities
 
