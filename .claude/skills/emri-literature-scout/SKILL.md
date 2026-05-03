@@ -22,14 +22,18 @@ suitable for `literature/` cataloguing and prior-art checks.
 ## Input
 - **Topic**: e.g. "EMRI surrogate models", "Teukolsky homogeneous solutions", "NK inspiral"
 - **Scope**: "last 5 years" / "foundational only" / "comprehensive"
-- **Sources**: default `inspirehep + arXiv`; optionally `ADS, Google Scholar`
+- **Sources**: default `local Zotero + literature/ + notes/literature-notes/` first,
+  then `inspirehep + arXiv` as external supplement; optionally `ADS, Google Scholar`
 - **Known anchors** (optional): papers to use as citation seeds
 
 ## Procedure
+0. **Local first.** Check local Zotero (via MCP), `literature/`, and
+   `notes/literature-notes/` for existing PDFs, structured summaries, and anchor
+   papers on the topic. Use what's already in-house before re-searching the web.
 1. Query inspirehep for the topic; extract title, author, year, arXiv ID, citation count.
 2. Query arXiv for recent preprints on the same topic.
 3. For each paper found: classify relevance as `core` / `related` / `background`.
-4. Cross-check against `literature/` — flag duplicates and gaps.
+4. Cross-check against local holdings — flag duplicates, local gaps, and new external finds.
 
 ## Output Structure
 For each paper, produce a structured entry:
@@ -37,11 +41,12 @@ For each paper, produce a structured entry:
 ```
 ### [FirstAuthor et al. (Year)](arXiv link)
 **Relevance:** core / related / background
+**Source:** local (Zotero/literature/notes) / external (inspirehep/arXiv) / both
 **What:** One-sentence summary of the main result.
 **Method:** Orbit model / PN / GSF / Teukolsky / surrogate / etc.
 **Regime:** Kerr/Schwarzschild, circular/eccentric/inclined, adiabatic/GSF
 **Benchmark potential:** Yes/No — if Yes, specify the check (e.g. "circular equatorial Omega_phi Table I")
-**File:** literature/<arxiv_id>.pdf (if downloaded)
+**Local assets:** PDF in `literature/` / note in `notes/literature-notes/` / Zotero item / none
 ```
 
 ## Output Destination

@@ -77,7 +77,23 @@ Match hedging to the label:
 - Physical normalizations: `r/M`, `Ω_φ M`, `t/M`.
 
 ## Citation Format
-Use `Author (Year), Eq. (N)` inline. Not `[12]`.
+
+**Working draft stage** (internal notes, structure building, related-work mapping):
+Prefer `Author (Year), Eq. (N)` for readability. This keeps drafts self-contained
+and reviewable without a live BibTeX backend.
+
+The Related Work output block uses this style:
+```
+<Author (Year)> <approach>. <key result>. 
+Difference from this work: <quantified discrepancy or regime difference>.
+```
+
+**Final APS manuscript stage** (submission-ready `.tex`):
+Switch to standard APS/BibTeX citation commands (`\cite{}`, `\citep{}`, `\citet{}`
+per journal template). Do not hardcode author-year strings in the final `.tex`.
+Equation-level citations use `\cite[Eq.~(N)]{key}`.
+The journal's reference style (superscript, author-year, numeric) is determined by
+the template — follow it, don't fight it.
 
 ## Output Destination
 - Paper text → `paper/sections/<section>-draft-v<N>.tex` or `.md`

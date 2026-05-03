@@ -23,7 +23,10 @@ This is the executable form of CLAUDE.md's Definition of Done.
 - **Feature description**: what was implemented
 - **Expected golden case(s)**: which analytic/numerical limit(s) should it reproduce
 - **Declared tolerance(s)**: the numeric threshold(s) for the golden case(s)
-- **Affected files**: list of changed files (from `git diff --name-only main..HEAD`)
+- **Base branch** (optional): the branch to diff against. If omitted, infer from
+  `origin/HEAD` or the repo's default branch. Compute `merge-base(base, HEAD)` and
+  use that as the diff range anchor. Do not hardcode `main`.
+- **Affected files**: derived from the diff range above
 
 ## Procedure
 
@@ -57,7 +60,8 @@ All existing tests must pass. Any pre-existing failure must be documented in
 Scan the diff for claims. Every new assertion in code, comments, or docstrings must
 carry one of: `[verified]`, `[speculative]`, `[to-verify]`.
 
-Run: `git diff main..HEAD | grep -E 'assert|raise|# |"""' | grep -v '\[verified\]|\[speculative\]|\[to-verify\]'`
+Compute the diff range as `merge-base(<base>, HEAD)..HEAD` using the resolved base
+branch from Input. Then: `git diff <merge-base>..HEAD | grep -E 'assert|raise|# |"""' | grep -v '\[verified\]|\[speculative\]|\[to-verify\]'`
 If this returns non-empty, flag unlabeled claims.
 
 ### 5. API Surface Check
